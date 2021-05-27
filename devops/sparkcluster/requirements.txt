@@ -1,0 +1,2 @@
+virtualenv
+pyspark==3.1.2

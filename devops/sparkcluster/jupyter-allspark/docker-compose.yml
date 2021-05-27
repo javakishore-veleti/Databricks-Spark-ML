@@ -1,0 +1,16 @@
+version: '3'
+services:
+    jupyter-all-spark-notebook:
+        image: jupyter/all-spark-notebook
+        container_name: jupyter-all-spark-notebook
+        # https://jupyter-docker-stacks.readthedocs.io/en/latest/using/specifics.html
+        ports:
+        - "8888:8888"
+        - "4040:4040"
+        - "4041:4041"
+        - "4042:4042"
+        - "4043:4043"
+        - "4044:4044"
+        - "4045:4045"
+        volumes:
+            - ./my_notebooks:/home/jovyan/work/my_notebooks
