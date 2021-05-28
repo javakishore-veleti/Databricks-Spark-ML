@@ -24,7 +24,7 @@ COPY finish-step.sh /
 # RUN apt install python3.9 python3.9-venv python3.9-dev -y
 
 
-RUN apk add --no-cache curl bash openjdk8-jre python3 py-pip nss libc6-compat \
+RUN apk add --no-cache curl bash openjdk8-jre python3 py-pip nss libc6-compat rsync \
       && ln -s /lib64/ld-linux-x86-64.so.2 /lib/ld-linux-x86-64.so.2 \
       && chmod +x *.sh \
       && wget https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \

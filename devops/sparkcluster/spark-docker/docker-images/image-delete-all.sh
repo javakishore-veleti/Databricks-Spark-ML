@@ -1,1 +1,1 @@
-docker rmi spark-docker-master spark-docker-worker spark-docker-submit spark-docker-base
+docker rmi jk-spark-cluster/spark-master jk-spark-cluster/spark-worker jk-spark-cluster/spark-submit jk-spark-cluster/spark-history-server jk-spark-cluster/spark-base
