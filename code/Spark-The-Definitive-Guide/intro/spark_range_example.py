@@ -9,6 +9,8 @@ total_count = range_rdd.count()
 
 logging.info(f"Total Count {total_count}")
 
+shutdown_spark_ctx()
+
 
 
 

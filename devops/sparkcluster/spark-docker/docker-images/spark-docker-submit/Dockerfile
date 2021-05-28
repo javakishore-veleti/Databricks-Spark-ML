@@ -1,4 +1,4 @@
-FROM spark-docker-base
+FROM jk-spark-cluster/spark-base
 
 ENV SPARK_MASTER_NAME spark-master
 ENV SPARK_MASTER_PORT 7077

@@ -1,7 +1,5 @@
 CURR_DIR=$(dirname $0)
 
-echo "Enter"
-
 cd ${CURR_DIR}/spark-docker-base
 ./base-docker-build.sh
 

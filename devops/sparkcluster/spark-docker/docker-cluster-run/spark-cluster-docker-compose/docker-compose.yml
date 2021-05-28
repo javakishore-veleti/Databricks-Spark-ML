@@ -1,0 +1,67 @@
+version: '3'
+services:
+  spark-master:
+    image: jk-spark-cluster/spark-master
+    hostname: spark-master
+    container_name: spark-master
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    environment:
+      - INIT_DAEMON_STEP=setup_spark
+      - "SPARK_PUBLIC_DNS=spark-master"
+      - "SPARK_MASTER_HOST=spark-master"
+  spark-worker-1:
+    image: jk-spark-cluster/spark-worker
+    hostname: spark-worker-1
+    container_name: spark-worker-1
+    depends_on:
+      - spark-master
+    links:
+      - spark-master
+    ports:
+      - "8081:8081"
+    environment:
+      - "SPARK_MASTER=spark://spark-master:7077"
+      - "SPARK_MASTER_HOST=spark-master"
+      - "SPARK_PUBLIC_DNS=spark-master"
+      - "SPARK_WORKER_CORES=2"
+      - "SPARK_WORKER_MEMORY=1g"
+      - "SPARK_EXECUTOR_MEMORY=256m"
+      - "SPARK_WORKER_WEBUI_PORT=8081"
+  spark-worker-2:
+    image: jk-spark-cluster/spark-worker
+    hostname: spark-worker-2
+    container_name: spark-worker-2
+    depends_on:
+      - spark-master
+    links:
+      - spark-master
+    ports:
+      - "8082:8082"
+    environment:
+      - "SPARK_MASTER=spark://spark-master:7077"
+      - "SPARK_MASTER_HOST=spark-master"
+      - "SPARK_PUBLIC_DNS=spark-master"
+      - "SPARK_WORKER_CORES=2"
+      - "SPARK_WORKER_MEMORY=1g"
+      - "SPARK_EXECUTOR_MEMORY=256m"
+      - "SPARK_WORKER_WEBUI_PORT=8082"
+  spark-worker-3:
+    image: jk-spark-cluster/spark-worker
+    hostname: spark-worker-3
+    container_name: spark-worker-3
+    depends_on:
+      - spark-master
+    links:
+        - spark-master
+    ports:
+      - "8083:8083"
+    environment:
+      - "SPARK_MASTER=spark://spark-master:7077"
+      - "SPARK_MASTER_HOST=spark-master"
+      - "SPARK_PUBLIC_DNS=spark-master"
+      - "SPARK_WORKER_CORES=2"
+      - "SPARK_WORKER_MEMORY=1g"
+      - "SPARK_EXECUTOR_MEMORY=256m"
+      - "SPARK_WORKER_WEBUI_PORT=8083"
