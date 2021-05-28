@@ -73,25 +73,5 @@ services:
       - "SPARK_WORKER_WEBUI_PORT=8083"
     volumes:
       - /tmp/docker-mount:/tmp/docker-mount
-  spark-history-server:
-    image: jk-spark-cluster/spark-history-server
-    hostname: spark-history-server
-    container_name: spark-history-server
-    depends_on:
-      - spark-master
-    links:
-        - spark-master
-    ports:
-      - "18080:18080"
-      - "18081:18081"
-    environment:
-      - "SPARK_MASTER=spark://spark-master:7077"
-      - "SPARK_MASTER_HOST=spark-master"
-      - "SPARK_PUBLIC_DNS=spark-master"
-      - "SPARK_WORKER_CORES=2"
-      - "SPARK_WORKER_MEMORY=1g"
-      - "SPARK_EXECUTOR_MEMORY=256m"
-      - "SPARK_WORKER_WEBUI_PORT=8083"
-    volumes:
-      - /tmp/docker-mount:/tmp/docker-mount  
+   
       
