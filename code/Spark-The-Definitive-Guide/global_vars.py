@@ -16,7 +16,10 @@ TMP_BASE_PATH_DOWNLOAD = '/tmp/docker-mount/Spark-The-Definitive-Guide/Downloads
 
 FLIGHT_DATA_CSV_BASE_URL = 'http://raw.githubusercontent.com/databricks/Spark-The-Definitive-Guide/master/data' \
                            '/flight-data/csv'
+
+# Columns -> DEST_COUNTRY_NAME	ORIGIN_COUNTRY_NAME	count
 FLIGHT_DATA_CSV_FILE_NAME_2015_SUMMARY = "2015-summary.csv"
+
 FLIGHT_DATA_CSV_URL_2015_SUMMARY = f"{FLIGHT_DATA_CSV_BASE_URL}/{FLIGHT_DATA_CSV_FILE_NAME_2015_SUMMARY}"
 FLIGHT_DATA_CSV_LOCAL_2015_SUMMARY = f"{TMP_BASE_PATH_DOWNLOAD}/{FLIGHT_DATA_CSV_FILE_NAME_2015_SUMMARY}"
 
