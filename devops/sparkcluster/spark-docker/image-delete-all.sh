@@ -1,0 +1,1 @@
+docker rmi spark-docker-master spark-docker-worker spark-docker-submit spark-docker-base

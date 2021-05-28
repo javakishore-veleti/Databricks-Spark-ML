@@ -1,0 +1,50 @@
+version: '3'
+services:
+  spark-docker-master:
+    image: spark-docker-master
+    hostname: spark-docker-master
+    container_name: spark-docker-master
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    environment:
+      - INIT_DAEMON_STEP=setup_spark
+  spark-docker-worker-1:
+    image: spark-docker-worker
+    hostname: spark-docker-worker-1
+    container_name: spark-docker-worker-1
+    depends_on:
+      - spark-docker-master
+    links:
+      - spark-docker-master
+    ports:
+      - "8081:8081"
+      - "35191:35191"
+    environment:
+      - "SPARK_MASTER=spark://spark-docker-master:7077"
+  spark-docker-worker-2:
+    image: spark-docker-worker
+    hostname: spark-docker-worker-2
+    container_name: spark-docker-worker-2
+    depends_on:
+      - spark-docker-master
+    links:
+      - spark-docker-master
+    ports:
+      - "8082:8081"
+      - "46071:46071"
+    environment:
+      - "SPARK_MASTER=spark://spark-docker-master:7077"      
+  spark-docker-worker-3:
+    image: spark-docker-worker
+    hostname: spark-docker-worker-3
+    container_name: spark-docker-worker-3
+    depends_on:
+      - spark-docker-master
+    links:
+        - spark-docker-master
+    ports:
+      - "8083:8081"
+      - "32905:32905"
+    environment:
+      - "SPARK_MASTER=spark://spark-docker-master:7077"            
