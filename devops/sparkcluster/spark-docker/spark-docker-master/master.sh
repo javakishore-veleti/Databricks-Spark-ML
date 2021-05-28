@@ -2,6 +2,7 @@
 
 export SPARK_HOME=/spark
 
+# Moved below env variable to Dockerfile
 # export SPARK_MASTER_HOST=`hostname`
 
 . "/spark/sbin/spark-config.sh"
