@@ -3,7 +3,30 @@ import os
 import logging
 
 this_file_path = os.path.dirname(os.path.realpath(__file__))
-logging.basicConfig(filename=f'{this_file_path}/Spark-Solutions-Logs.log', encoding='utf-8', level=logging.DEBUG)
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.FileHandler("{0}/{1}.log".format(this_file_path, "Spark-Solutions-Logs")),
+        logging.StreamHandler()
+    ]
+)
+
+# logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
+# rootLogger = logging.getLogger()
+
+# fileHandler = logging.FileHandler("{0}/{1}.log".format(this_file_path, "Spark-Solutions-Logs"))
+# fileHandler.setFormatter(logFormatter)
+# fileHandler.setLevel(logging.INFO)
+# rootLogger.addHandler(fileHandler)
+
+# consoleHandler = logging.StreamHandler()
+# consoleHandler.setFormatter(logFormatter)
+# consoleHandler.setLevel(logging.INFO)
+# rootLogger.addHandler(consoleHandler)
+
+# logging.basicConfig(filename=f'{this_file_path}/Spark-Solutions-Logs.log', encoding='utf-8', level=logging.DEBUG)
 # CAUTION: Below logger setLevel is required to resolve the issue "pyspark Message: 'Answer received: !yv'"
 logging.getLogger('pyspark').setLevel(logging.ERROR)
 logging.getLogger("py4j").setLevel(logging.ERROR)

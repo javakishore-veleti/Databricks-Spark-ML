@@ -1,6 +1,9 @@
 from global_initiator import *
 from util_functions import download_url_file
 
+logging.info("Enter")
+
+# https://github.com/databricks/Spark-The-Definitive-Guide/blob/master/code/A_Gentle_Introduction_to_Spark-Chapter_2_A_Gentle_Introduction_to_Spark.py
 download_url_file(FLIGHT_DATA_CSV_URL_2015_SUMMARY, FLIGHT_DATA_CSV_LOCAL_2015_SUMMARY)
 
 spark_session = initialize_spark(f"Flight Data 2015 Summary - SQL Way - {CURR_DATE_TIME}")
@@ -21,3 +24,5 @@ ORDER BY DEST_COUNTRY_NAME
 result.show()
 
 shutdown_spark_ctx()
+
+logging.info("Exit")

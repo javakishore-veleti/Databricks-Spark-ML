@@ -16,7 +16,7 @@ def create_spark_context(app_name: str) -> SparkSession:
     # spark_session = SparkSession(spark_ctx)
     spark_session = SparkSession.builder.master(SPARK_MASTER_IP).appName(app_name).getOrCreate()
 
-    print(f"Spark Version : {spark_session.sparkContext.version}")
+    logging.info(f"Spark Version : {spark_session.sparkContext.version}")
     return spark_session
 
 
